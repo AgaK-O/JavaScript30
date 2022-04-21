@@ -58,7 +58,19 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+const play = (e) => {
+  const audio = document.querySelector(`audio[data-key='${e.keyCode}']`);
+  const pressedKey = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  if(!audio) return;
+  audio.currentTime = 0;
+  audio.play();
+  pressedKey.classList.add('playing');
+  setTimeout(() =>
+    {pressedKey.classList.remove('playing')}
+  , 100);
+}
 
+document.addEventListener('keydown', play )
 </script>
 
 
